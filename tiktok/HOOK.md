@@ -127,10 +127,20 @@ _KHI DỮ LIỆU CÁC STATE QUÁ NHIỀU HOẶC PHỤ THUỘC NHAU THÌ SỬ D�
 
 # USE CONTEXT : TRUYỀN DỮ LIỆU TỪ COMPO CHA XUỐNG BẤT KÌ COMPO CON NÀO MÀ KHÔNG CẦN DÙNG PROPS
 
-- cách sử dụng : 
-        ++ đặt biết abc = createContext() => nó sẽ trả về obj gồm provider và consumer, dùng thẻ <abc.Provider value={xyz}></abc.Provider> để bao cả thằng cha lại
-        ++ bên thằng con thì đặc biến để để nhận giá trị của thằng cha. ví dụ : const child = useContext(xyz)
+- cách sử dụng :
+  ++ đặt biết abc = createContext() => nó sẽ trả về obj gồm provider và consumer, dùng thẻ <abc.Provider value={xyz}></abc.Provider> để bao cả thằng cha lại
+  ++ bên thằng con thì đặc biến để để nhận giá trị của thằng cha. ví dụ : const child = useContext(xyz)
 - gồm 3 bước :
   ++ 1. create context
   ++ 2. Provider (nhà cung cấp)
   ++ 3. Consumer (đối tượng sử dụng)
+
+# USE IMPERATIVEHANDLE HOOK : Component child có thể tùy chỉnh các trả về ref cho Component cha. useImperativeHandle phải đi kèm với forwardRef
+
+- cách sử dụng: gọi sử dụng phương thức forwardRef trong thư viện react, sau đó dùng nó để wrap lại thằng được nhận ref ở chỗ export
+  ++ sau đó sử dụng useIMPERATIVEHANDLE(ref, callback({})) : ref là đối số thứ nhất mà được forward xuống, callback sẽ đƯợc dùng làm đối số cho thằng được truyền trong ref={} ở thằng compo cha
+
+-- _TÁC DỤNG_ :
+++ 1. KIỂM SOÁT ĐƯỢC GIÁ TRỊ TRẢ VỀ\
+ ++ 2. THAY THẾ CÁC CHỨC NĂNG GỐC(FOCUS, BLUR, PLAY, PAUSE) BẰNG CHỨC NĂNG CUSTOM
+++ 3. GIÚP KHÔNG HIỂN THỊ CÁC THUỘC TÍNH GỐC Ở COMPO CHA

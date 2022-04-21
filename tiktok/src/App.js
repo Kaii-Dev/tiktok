@@ -19,6 +19,10 @@ import Todolist from "./todolist/Todolist";
 import UseContext from "./MOUNTED/UseContext";
 import "./App.css";
 import { actions, useStore } from "./store";
+import Video from "./Video";
+import Heading from "./components/Heading";
+import Paragraph from "./components/Paragraph";
+import GlobalStyles from "./components/GlobalStyles";
 // function App() {
 //   const [info, setInfo] = useState({
 //     name: "khai le",
@@ -469,30 +473,71 @@ import { actions, useStore } from "./store";
 // }
 
 //======================== USE CONTEXT + USE REDUCER = GLOBAL STATE =========================//
+// function App() {
+//   const [state, dispatch] = useStore(); // use store là hook đc cus trong hooks.js
+//   const { todos, todoInput } = state;
+//   const handleAdd = () => {
+//     dispatch(actions.addTodoInput(todoInput));
+//   };
+//   return (
+//     <div className="" style={{ padding: 20 }}>
+//       <h1>TO DO LIST WITH USE REDUCER AND USE CONTEXT </h1>
+//       <input
+//         type="text"
+//         value={todoInput}
+//         placeholder="Enter todo"
+//         onChange={(e) => {
+//           dispatch(actions.setTodoInput(e.target.value));
+//         }}
+//       />
+//       <button onClick={handleAdd}>ADD</button>
+//       <ul>
+//         {todos.map((todo, index) => (
+//           <li key={index}> {todo}</li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+
+// ===========================USE IMPERATIVEHANDLE HOOK==================/
+
+// function App() {
+//   const videoRef = useRef();
+
+//   useEffect(() => {
+//     console.log(videoRef.current);
+//   });
+//   const handlePlay = () => {
+//     videoRef.current.play();
+//   };
+//   const handlePause = () => {
+//     videoRef.current.pause();
+//   };
+
+//   return (
+//     <div className="">
+//       {/* ref ở đây vẫn đc truyền xuống dưới nhưng truyền thẳng đến cho forwardRef và nó nhận được props ref, bên trong thằng forward sẽ  xử lý để gọi thằng Video và nó truyền props ref thành đối số mới của Video*/}
+//       <Video ref={videoRef}></Video>
+//       <button onClick={handlePlay}>Play</button>
+//       <button onClick={handlePause}>Pause</button>
+//     </div>
+//   );
+// }
+
+//======================= CSS MODULE=================/
 function App() {
-  const [state, dispatch] = useStore(); // use store là hook đc cus trong hooks.js
-  const { todos, todoInput } = state;
-  const handleAdd = () => {
-    dispatch(actions.addTodoInput(todoInput));
-  };
   return (
-    <div className="" style={{ padding: 20 }}>
-      <h1>TO DO LIST WITH USE REDUCER AND USE CONTEXT </h1>
-      <input
-        type="text"
-        value={todoInput}
-        placeholder="Enter todo"
-        onChange={(e) => {
-          dispatch(actions.setTodoInput(e.target.value));
-        }}
-      />
-      <button onClick={handleAdd}>ADD</button>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}> {todo}</li>
-        ))}
-      </ul>
-    </div>
+    <GlobalStyles>
+      <div className="">
+        <Heading></Heading>
+        <Paragraph></Paragraph>
+      </div>
+      <div className="d-flex">
+        <div>item 1</div>
+        <div>item 1</div>
+      </div>
+    </GlobalStyles>
   );
 }
 export default App;
