@@ -23,6 +23,12 @@ import Video from "./Video";
 import Heading from "./components/Heading";
 import Paragraph from "./components/Paragraph";
 import GlobalStyles from "./components/GlobalStyles";
+import Button from "./components/Button";
+
+import { Routes, Route, Link } from "react-router-dom";
+import HomePage from "./pages/Home";
+import NewsPage from "./pages/News";
+import ContactPage from "./pages/Contact";
 // function App() {
 //   const [info, setInfo] = useState({
 //     name: "khai le",
@@ -526,18 +532,69 @@ import GlobalStyles from "./components/GlobalStyles";
 // }
 
 //======================= CSS MODULE=================/
+// function App() {
+//   return (
+//     <GlobalStyles>
+//       <div className="">
+//         <Heading></Heading>
+//         <Paragraph></Paragraph>
+//       </div>
+//       <div className="d-flex">
+//         <div>item 1</div>
+//         <div>item 1</div>
+//       </div>
+//     </GlobalStyles>
+//   );
+// }
+
+//======================= CLSX - CLASSNAMES=================/
+
+// function App() {
+//   return (
+//     <GlobalStyles>
+//       <div className="" style={{ padding: 25 }}>
+//         <Button primary></Button>
+//         <Button></Button>
+//         <Button disable ></Button>
+//       </div>
+//     </GlobalStyles>
+//   );
+// }
+
+//============================REACT ROUTER=========================/
 function App() {
   return (
-    <GlobalStyles>
-      <div className="">
-        <Heading></Heading>
-        <Paragraph></Paragraph>
-      </div>
-      <div className="d-flex">
-        <div>item 1</div>
-        <div>item 1</div>
-      </div>
-    </GlobalStyles>
+    <div className="">
+      <nav>
+        <ul>
+          {/* <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/news">News</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li> */}
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/news">News</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/news" element={<NewsPage></NewsPage>}></Route>
+        <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
+      </Routes>
+    </div>
   );
 }
+
 export default App;

@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter as Rounter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -19,10 +20,16 @@ emitComment(2);
 emitComment(3);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  // <React.StrictMode>
+  //   <StoreProvider>
+  //     <App />
+  //   </StoreProvider>
+  // </React.StrictMode>
+
   <React.StrictMode>
-    <StoreProvider>
+    <Rounter>
       <App />
-    </StoreProvider>
+    </Rounter>
   </React.StrictMode>
 );
 
